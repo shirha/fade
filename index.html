@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>NMS Void Portals Address</title>
+<style> 
+@media print { div {break-inside: avoid;} }  
+@font-face   { font-family: "NMS Glyphs"; src: url("NMS-Glyphs-Mono.ttf"); }
+body {background: url("sky.jpg") repeat; margin: 0; font-size: 18px; font-family: sans-serif;}
+img  {width: 230px; height: 280px;}
+.l {display: inline-block; padding:  0   0  0   25px;} /* class: left   */
+.r {display: inline-block; padding: 25px 0 25px 25px;} /* class: right  */
+.o {display: flex; flex-wrap: wrap;}                   /* class: outer  */
+.r {line-height: 175%; font-size: 18px; vertical-align: text-top;}
+.t {font-size: 1.25em; font-weight: bold;}             /* class: system */
+.n {font-size: 1.5em; font-weight: bold; font-family: "NMS Glyphs";}
+p,.c {border: 2px solid #68bad0; border-radius: 5px;}
+p  {display: inline-block; color: #68bad0; margin: 0 0 20px 20px; padding: 5px 10px; font-weight: bold;}
+hr {margin: 0; width: 75%;}
+h3 {padding: 0 0 10px 100px; margin: 0;}
+.url {padding: 25px 0 10px 25px;}
+.stroke {
+  /* background: lightgrey; border: 1px solid #222; font-weight: bold; */ 
+  color: white; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  /* color: #68bad0; text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white; */
+}
+</style></head><body>
+<div id="container"></div>
+<div class=url>
+<a href="https://nomanssky.fandom.com/wiki/Portal_address#Extreme_Coordinates">
+<h3>Extreme Coordinates</h3></a>
+Upper Pole<br>
+<span class=n>1 001 7F 000 000</span><br>
+Near Centre<br>
+<span class=n>1 001 04 005 005</span><br>
+Lower Pole<br>
+<span class=n>1 001 8<span class=c>1</span> 000 000</span><br>
+North Pole (galactic plane)<br>
+<span class=n>1 001 00 80<span class=c>1</span> 000</span><br>
+East Pole (galactic plane)<br>
+<span class=n>1 001 00 000 7FF</span><br>
+South Pole (galactic plane)<br>
+<span class=n>1 001 00 7FF 000</span><br>
+West Pole (galactic plane)<br>
+<span class=n>1 001 00 000 80<span class=c>1</span></span><br>
+Alpha Spiral (majoris)<br>
+<span class=n>1 001 7F 80<span class=c>1</span> 80<span class=c>1</span></span><br>
+Alpha Spiral (galactic plane)<br>
+<span class=n>1 001 00 80<span class=c>1</span> 80<span class=c>1</span></span><br>
+Alpha Spiral (minoris)<br>
+<span class=n>1 001 81 80<span class=c>1</span> 80<span class=c>1</span></span><br>
+Beta Spiral (majoris)<br>
+<span class=n>1 001 7F 80<span class=c>1</span> 7FF</span><br>
+Beta Spiral (galactic plane)<br>
+<span class=n>1 001 00 80<span class=c>1</span> 7FF</span><br>
+Beta Spiral (minoris)<br>
+<span class=n>1 001 81 80<span class=c>1</span> 7FF</span><br>
+Gamma Spiral (majoris)<br>
+<span class=n>1 001 7F 7FF 80<span class=c>1</span></span><br>
+Gamma Spiral (galactic plane)<br>
+<span class=n>1 001 00 7FF 80<span class=c>1</span></span><br>
+Gamma Spiral (minoris)<br>
+<span class=n>1 001 81 7FF 80<span class=c>1</span></span><br>
+Delta Spiral (majoris)<br>
+<span class=n>1 001 7F 7FF 7FF</span><br>
+Delta Spiral (galactic plane)<br>
+<span class=n>1 001 00 7FF 7FF</span><br>
+Delta Spiral (minoris)<br>
+<span class=n>1 001 81 7FF 7FF</span><br></div>
+<p>Corrected</p>
+<script>
+  let img = new Image(),
+    page  = document.getElementById('container'),
+    coord = {
+      'x':[['801', '0000', -2047], ['000', '07FF', 0], ['7FF', '0FFF', 2047]],
+      'y':[['81',  '0000', -127 ], ['00',  '007F', 0], ['7F',  '00FF',  127]],
+      'z':[['801', '0000', -2047], ['000', '07FF', 0], ['7FF', '0FFF', 2047]]}, 
+    pts   = [
+      [[ 53,107],[ 25,142],[ 53,177]],  // x= +|- 90|62, y= +|- 50|35
+      [[115, 92],[115,142],[115,192]],
+      [[177,107],[205,142],[177,177]]];  
+
+  for(let x = 0; x < 3; x++){
+  for(let z = 0; z < 3; z++){
+  for(let y = 0; y < 3; y++){
+    page.innerHTML += `
+      <div class=o><div class=l><canvas id=c${x}${y}${z} width="230" height="280"></div><div class=r>
+      <!--b>System Name: </b><span class=t></span><br-->
+      <span class=n>1079${coord['y'][y][0]} ${coord['z'][z][0]}${coord['x'][x][0]}</span><br>
+      <b>Portal Hex:</b> 1079${coord['y'][y][0]} ${coord['z'][z][0]}${coord['x'][x][0]}
+         <!--span style="color:#68bad0; padding-left:40px;">c${x}${y}${z}</span--><br> <!-- debug -->
+      <b>Galactic Coordinate:</b> ${coord['x'][x][1]}:${coord['y'][y][1]}:${coord['z'][z][1]}:0079<br>
+      <b>X-Y-Z:</b> ${coord['x'][x][2]},${coord['y'][y][2]},${coord['z'][z][2]}<br>
+      <b>System Index:</b> 121<br>
+      <b>Planet Index:</b> 1
+      </div></div><hr color="#68bad0">`;
+  }}}
+  
+  img.onload = function() {
+    var c = document.querySelectorAll('canvas');
+    for(let i = 0; i < c.length; i++){
+      let ctx     = c[i].getContext("2d"),
+        [_,x,y,z] = c[i].id.match(/c(\d)(\d)(\d)/),
+        [sx,sz]   = pts[x][z],
+        dy        = -Math.sign(coord['y'][y][2]) * 75 + sz;
+
+      ctx.drawImage(img, 0, 0);
+
+      ctx.beginPath();
+      ctx.moveTo(sx,sz);
+      ctx.lineTo(sx,dy);
+      ctx.strokeStyle = "white";
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(sx,dy,7,0, 2 * Math.PI);
+      ctx.fillStyle = "yellow";
+      ctx.fill();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = "black";
+      ctx.stroke();
+      console.log(x,y,z);
+      let a; // breakpoint
+    }
+  };
+  img.src = 'euclid.png';
+</script></body></html>
